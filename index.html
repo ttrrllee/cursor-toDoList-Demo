@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb bg-orb--one" aria-hidden="true"></div>
+    <div class="bg-orb bg-orb--two" aria-hidden="true"></div>
+
+    <main class="app">
+      <header class="hero">
+        <p class="eyebrow">Daily focus</p>
+        <h1>할 일 목록</h1>
+        <p class="subtitle" id="dateLabel"></p>
+      </header>
+
+      <section class="card" aria-labelledby="todo-heading">
+        <h2 id="todo-heading" class="visually-hidden">할 일 관리</h2>
+
+        <form class="composer" id="todoForm" autocomplete="off">
+          <label class="visually-hidden" for="todoInput">새 할 일</label>
+          <input
+            id="todoInput"
+            type="text"
+            name="todo"
+            placeholder="무엇을 해야 하나요?"
+            maxlength="120"
+            required
+          />
+          <button type="submit" class="btn-add" aria-label="할 일 추가">
+            추가
+          </button>
+        </form>
+
+        <div class="toolbar">
+          <p class="count" id="countLabel">남은 할 일 0개</p>
+          <div class="filters" role="tablist" aria-label="할 일 필터">
+            <button type="button" class="filter is-active" data-filter="all">
+              전체
+            </button>
+            <button type="button" class="filter" data-filter="active">진행</button>
+            <button type="button" class="filter" data-filter="completed">
+              완료
+            </button>
+          </div>
+        </div>
+
+        <ul class="todo-list" id="todoList"></ul>
+
+        <p class="empty" id="emptyState">아직 할 일이 없어요. 위에서 추가해 보세요.</p>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
