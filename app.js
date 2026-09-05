@@ -23,7 +23,7 @@ form.addEventListener("submit", (event) => {
   if (!text) return;
 
   todos.unshift({
-    id: crypto.randomUUID(),
+    id: createId(),
     text,
     done: false,
   });
@@ -58,6 +58,13 @@ filterButtons.forEach((button) => {
     render();
   });
 });
+
+function createId() {
+  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
+    return crypto.randomUUID();
+  }
+  return `todo-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+}
 
 function persistAndRender() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(todos));
